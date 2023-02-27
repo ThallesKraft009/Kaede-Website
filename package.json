@@ -1,0 +1,42 @@
+{
+  "name": "kaede-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "dependencies": {
+    "better-sqlite3": "^8.0.1",
+    "body-parser": "^1.20.1",
+    "colors": "^1.4.0",
+    "data-uri-to-buffer": "^4.0.0",
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "fetch-blob": "^3.1.5",
+    "formdata-polyfill": "^4.0.10",
+    "memorystore": "^1.6.7",
+    "mongoose": "^6.9.0",
+    "morgan": "^1.10.0",
+    "node-domexception": "^1.0.0",
+    "node-fetch": "^3.3.0",
+    "passport": "^0.6.0",
+    "passport-discord": "^0.1.4",
+    "quick.db": "^9.0.8",
+    "undici": "^5.16.0",
+    "web-streams-polyfill": "^3.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThallesKraft009/kaede-website.git"
+  },
+  "author": "ThallesKraft",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThallesKraft009/kaede-website/issues"
+  },
+  "homepage": "https://github.com/ThallesKraft009/kaede-website#readme"
+}
