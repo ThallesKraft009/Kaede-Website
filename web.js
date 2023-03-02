@@ -186,7 +186,6 @@ await kaede.userdb.updateOne({
      }
         })
 
-  console.log(req.user.email)
        return res.render("main", {
          kaede, req
        })
