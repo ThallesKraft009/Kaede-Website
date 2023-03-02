@@ -44,14 +44,9 @@
       }
 
       body {
-        background: linear-gradient(to right, #db7093, #ff69b4, #c71585);
-        color: #fff;
+        background-color : rgb(37, 37, 37);               color: #fff;
         font-family: "Euclid Circular B Medium", Poppins;
       }
-      img {
-  border-radius: 50%;
-      }
-
 
       .navbar-toggler {
         display: none;
@@ -94,124 +89,6 @@
         text-decoration: none;
       }
 
-          #features {
-        margin-top: 100px;
-      }
-
-      .title-features {
-        color: white;
-        text-transform: uppercase;
-        font-weight: 700;
-      }
-
-      .section-features {
-        padding-top: 110px;
-        padding-bottom: 120px;
-        color: white;
-      }
-
-      .title {
-        background: linear-gradient(to right, #8a2387, #e94057, #f27121);
-        color: transparent;
-        -webkit-background-clip: text;
-        background-clip: text;
-        text-decoration: none;
-      }
-
-      .section-features .header-section {
-        margin-bottom: 35px;
-        }
-
-
-        .section-features .header-section .title {
-        position: relative;
-        margin-bottom: 40px;
-        padding-bottom: 25px;
-        text-transform: uppercase;
-        font-weight: 700;
-      }
-
-      .section-features .header-section .title:before {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 140px;
-        height: 1px;
-        background-color: #f70037;
-      }
-
-      .section-features .header-section .title:after {
-        content: "";
-        position: absolute;
-        bottom: -1px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 45px;
-        height: 3px;
-        background-color: #f70037;
-      }
-
-      .section-features .header-section .title span {
-        color: #f70037;
-      }
-
-      .section-features .header-section .description {
-        color: #6f6f71;
-        }
-
-        .section-features .single-service {
-        margin-top: 40px;
-        background: rgba(255, 255, 255, 0.35);
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-        backdrop-filter: blur(9px);
-        -webkit-backdrop-filter: blur(9px);
-        border-radius: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-      }
-
-      .section-features .single-service .part-1 {
-        padding: 40px 40px 25px;
-        border-bottom: 2px solid #1d1e23;
-      }
-
-      .section-features .single-service .part-1 i {
-        margin-bottom: 25px;
-        font-size: 50px;
-        color: #f70037;
-      }
-
-      .section-features .single-service .part-1 .title {
-        font-size: 17px;
-        font-weight: 700;
-        letter-spacing: 0.02em;
-        line-height: 1.8em;
-      }
-
-      .section-features .single-service .part-2 {
-        padding: 30px 40px 40px;
-      }
-
-      .section-features .single-service .part-2 .description {
-        margin-bottom: 22px;
-        color: white;
-        font-size: 14px;
-        line-height: 1.8em;
-                                    }
-
-
-        .section-features .single-service .part-2 a {
-        color: #fff;
-        font-size: 14px;
-        text-decoration: none;
-      }
-
-      .section-features .single-service .part-2 a i {
-        margin-right: 10px;
-        color: #f70037;
-        }
-
     </style>
   </head>
 
@@ -245,7 +122,7 @@
               justify-content: center;
             "
           >
-            <%= kaede.user.username %>
+            <%= req.user.username %>
           </a>
           <button
             class="navbar-toggler"
@@ -269,7 +146,7 @@
               >
             </div>
             <a href="/gerenciar" class="btn" type="button" style="color: white">
-              Configuração
+              Dashboard
             </a>
           </div>
           <div class="collapse navbar-collapse" id="navbarText">
@@ -289,59 +166,50 @@
           id="hero"
           class="text-center"
           style="position: relative; top: 50%; transform: translateY(-50%)"
-        >
-          <img
-              src="<%= kaede.user.displayAvatarURL({ format: 'png', size: 2048, dynamic: true }) %>"
+        ><br><br>
+<img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROXAmHtCm7_BDsDENahR2760-tqE9aaNApcA&usqp=CAU"
               alt="  <%= kaede.user.username %>"
-              width="200"
+              width="300"
               height="200"
               class="d-inline-block align-text-top"
             /><br></br>
-          <h1><%= kaede.user.username %></h1>
-          <p>
-            Uma robô incrível para sua comunidade no Discord.
-          </p>
+          
+
+      <% if (tempo === true){ %>
+          
+
+    <h1> Você já resgatou suas KaedeCoins! </h1>
+        <p>
+    <h2> Volte mais tarde! </h2>
+  <% } else { %>
+
+    <div id="texto">
+
+  <h1>  Antes de resgatar... </h1>
+  <p>
+  <h3>A compra/venda de itens com KaedeCoins é proibido e você pode ser banido da Kaede.</h3><h3><p>Não use VPN/proxies para pegar seu daily, também é proibido usar mais de uma conta para isso.</h3>
+  </p><br>
+      
+      <h1> Resgate suas KaedeCoins diárias! </h1>
+    </div>
+    <a id="daily" class="btn" type="button" onclick="kaedecoins()" style="background: rgba( 255, 255, 255, 0.35 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 9px );
+-webkit-backdrop-filter: blur( 9px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );">Resgatar Kaedecoins</a>
+         <% } %>
+         
+           </br>
+
+           
         </div>
       </div>
       <!-- End Hero -->
 
-<div id="features" class="section-features">
-        <div class="container">
-          <div class="row justify-content-center text-center">
-            <div class="col-md-10 col-lg-8">
-              <div class="header-section">
-                <h2 class="title-features">Minhas <span>Funções</span></h2>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6 col-lg-4">
-              <div class="single-service">
-                <div class="part-1">
-                  <h3 class="title">Sistema de Economia </h3>
-                </div>
-                <div class="part-2">
-                  <p class="description">
-                    Um sistema que usa a moeda chamapr"KaedeCoins", com essa moeda você pode comprar funções exclusivas e etc.
-                  </p>
-                </div>
-              </div>
-  </div>
-    
-            <div class="col-md-6 col-lg-4">
-              <div class="single-service">
-                <div class="part-1">
-                  <h3 class="title">Configuração de Servidor</h3>
-                </div>
-                <div class="part-2">
-                  <p class="description">
-                    Você pode configurar sistemas em seu servidor, como Ticket, Autorole, etc.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
+  
     </section>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
@@ -351,7 +219,37 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </body>
   <script>
-    $(document).ready(() => {
+
+let doc = document.getElementById("a")
+$("#a").append(`<%= horario %>`)
+   
+  
+    async function kaedecoins(){
+
+      let a = document.getElementById('daily');
+      let b = document.getElementById('texto');
+      
+
+      a.remove()
+      b.remove()
+
+  let moedas = Math.floor(Math.random() * 2500) + 11000;
+
+    $("#hero").append(`
+    
+    <% atualizar() %>
+    Você acabou de resgatar suas KaedeCoins!
+    `);
+      
+    }
+
+
+    
+    /*$(document).ready(() => {
+
+  if (){
+    
+  } else {
 
         $("#hero").append(`
             <a href="/gerenciar" class="btn" type="button" style="background: rgba( 255, 255, 255, 0.35 );
@@ -359,17 +257,9 @@ box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 backdrop-filter: blur( 9px );
 -webkit-backdrop-filter: blur( 9px );
 border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );">Configurar</a> <a href="/comandos" class="btn" type="button" style="background: rgba( 255, 255, 255, 0.35 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 9px );
--webkit-backdrop-filter: blur( 9px );
-border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );">Comandos</a> <a href="https://discord.com/api/oauth2/authorize?client_id=1038589877865959484&permissions=708607732982&redirect_uri=https%3A%2F%2FKaede-Website.thalleskraft.repl.co%2Fcallback&response_type=code&scope=email%20identify%20guilds%20bot%20applications.commands" class="btn" type="button" style="background: rgba( 255, 255, 255, 0.35 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 9px );
--webkit-backdrop-filter: blur( 9px );
-border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );">Me adicione!</a>`);
-      });
+border: 1px solid rgba( 255, 255, 255, 0.18 );">Dashboard</a>`);
+    }
+  });*/
+    
   </script>
-      </html>
+  </html>

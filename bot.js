@@ -8,10 +8,11 @@ const KaedeBot = new Client({
 
 KaedeBot.once("ready", () => {
 
-//connect(process.env.mongo)
+connect(process.env.mongo)
   
   require("./web.js")(KaedeBot)
 })
 
-//KaedeBot.svdb = require("./mongo/server.js");
+KaedeBot.svdb = require("./mongo/server.js");
+KaedeBot.userdb = require("./mongo/user.js");
 KaedeBot.login(process.env.token)

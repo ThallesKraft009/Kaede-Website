@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> <%= kaede.user.username %> </title>
+    <link rel="shortcut icon" href="<%= kaede.user.displayAvatarURL({ format: 'png', size: 2048, dynamic: true }) %>" type="image/gif" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @font-face {
+        font-family: "Euclid Circular B Medium";
+        src: url("https://db.onlinewebfonts.com/t/721c73bcd2e49f3a621991089838b503.eot");
+        src: url("https://db.onlinewebfonts.com/t/721c73bcd2e49f3a621991089838b503.eot?#iefix")
+        format("embedded-opentype"),
+        url("https://db.onlinewebfonts.com/t/721c73bcd2e49f3a621991089838b503.woff2")
+        format("woff2"),
+        url("https://db.onlinewebfonts.com/t/721c73bcd2e49f3a621991089838b503.woff")
+        format("woff"),
+        url("https://db.onlinewebfonts.com/t/721c73bcd2e49f3a621991089838b503.ttf")
+        format("truetype"),
+        url("https://db.onlinewebfonts.com/t/721c73bcd2e49f3a621991089838b503.svg#Euclid Circular B Medium")
+        format("svg");
+        font-display: swap;
+      }
+
+      body {
+        background-color : rgb(37, 37, 37);               color: #fff;
+        font-family: "Euclid Circular B Medium", Poppins;
+      }
+      img {
+  border-radius: 50%;
+      }
+
+      .navbar-toggler {
+        display: none;
+      }
+
+      .hero {
+        margin-top: 5%;
+      }
+
+      .commands {
+        margin-top: 100px;
+        padding-top: 110px;
+        padding-bottom: 120px;
+      }
+
+      .commands .title {
+        position: relative;
+        padding-bottom: 25px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: white;
+      }
+
+      @media only screen and (max-width: 630px) {
+        .navbar-toggler {
+          display: inherit;
+        }
+
+        .nav-links {
+          display: none !important;
+        }
+      }
+
+
+      .title {
+        background: linear-gradient(to right, #8a2387, #e94057, #f27121);
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+        text-decoration: none;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <section class="main">
+      <!-- Navbar -->
+      <nav
+        class="navbar"
+        style="
+          overflow: hidden;
+          position: fixed;
+          top: 0; 
+          width: 100%;
+          z-index: 100;
+          background: rgba(255, 255, 255, 0.35);
+          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+          backdrop-filter: blur(9px);
+          -webkit-backdrop-filter: blur(9px);
+          border: 1px solid rgba(255, 255, 255, 0.18);
+          height: 10%;
+        "
+      >
+        <div class="container-fluid">
+          <a
+            class="navbar-brand"
+            href="#"
+            style="
+              color: white;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+           Olá, <%= req.user.username %>!
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarText"
+            aria-controls="navbarText"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="d-flex nav-links">
+            <div class="d-flex justify-content-center">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="/comandos"
+                style="color: white"
+                >Minha lista de Comandos</a
+              >
+            </div>
+            <a href="/gerenciar" class="btn" type="button" style="color: white">
+              Voltar
+            </a>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="/comandos">Comandos</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+
+      <!-- Hero entry 👌 -->
+      <div class="hero" style="height: 100vh; width: 100%">
+        <div
+          id="hero"
+          class="text-center"
+          style="position: relative; top: 50%; transform: translateY(-50%)"
+        >
+          <img
+              src="<%= kaede.guilds.cache.get(guild.id).iconURL({ format: 'png', size: 2048, dynamic: true }) %>"
+              alt="  <%= kaede.user.username %>"
+              width="200"
+              height="200"
+              class="d-inline-block align-text-top"
+            /><br></br>
+          <h1><%= guild.name %></h1>
+          <p>
+            <div class="row">
+            
+            <a href="#sistemas" class="btn" type="button" onclick="autorole()" style="background: rgba( 255, 255, 255, 0.35 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 145, 0.37 );
+backdrop-filter: blur( 9px );
+-webkit-backdrop-filter: blur( 9px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );">Autorole</a>
+              </div>
+
+          <div class="row">
+            <p></p>
+
+              <a href="#sistemas" class="btn" type="button" onclick="embed()" style="background: rgba( 255, 255, 255, 0.35 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 145, 0.37 );
+backdrop-filter: blur( 9px );
+-webkit-backdrop-filter: blur( 9px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );">Criar embed</a>
+              
+          </br>
+            
+            </div>
+        </div>
+      </div>
+      
+      <!-- End Hero -->
+
+<div class="hero" style="height: 100vh; width: 100%">
+        <div
+          id="hero"
+          class="text-center"
+          style="position: relative; top: 50%; transform: translateY(-50%)"
+        >
+  
+      <div id="sistemas">
+         <h3>Selecione o sistema!</h3>
+      </div>
+
+
+        </div>
+</div>
+      
+      
+    </section>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </body>
+  <script>
+
+    async function embed(){
+
+    let ctx = document.getElementById("sistemas");
+
+    ctx.innerHTML = `<form action="/api/send_embed/<%= guild.id %>" method="POST" class="">
+        <div class="container py-3 " >
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row justify-content-center">
+                                <div class="col-md-10 offset-md-1">
+                                    <span class="anchor" id="formComplex"></span>
+                                    <!-- form complex example -->
+                                    <div class="card card-outline-secondary" style="background : rgb(212, 212, 212); color : #000;">
+                                        <div class="card-header">
+                                            <h3 class="mb-0" style="text-align: center;">Criação de Embed</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row mt-4">
+                                                <div class="col-sm-5 pb-3">
+                                                    <label for="channlid">Canal de Texto</label>
+                                                    <select class="form-control custom-select" id="channlid" name="channlid">
+                                                        <% for(var i=0; i < channels.length; i++) {%>
+                                                            <% if(channels[i].type === 0 || channels[i].type === 5) { %>
+                                                                <option value="<%= channels[i].id %>"><%= channels[i].name %></option>
+                                                            <% } %>
+                                                        <% } %>                                     
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-6 pb-3">
+                                                    <label for="thumbnail">Thumbnail</label>
+                                                    <input class="form-control" id="thumbnail" name="thumbnail"
+                                                        type="url" >
+                                                </div>
+                                                <div class="col-sm-5 pb-3">
+                                                    <label for="title">Titulo da Embed</label>
+                                                    <input class="form-control" id="title" name="title" type="text">
+                                                </div>
+                                                <div class="col-sm-3 pb-3">
+                                                    <label for="color">Cor da Embed</label>
+                                                    <input class="form-control" id="color" name="color" type="color" style="height: 40px;">
+                                                </div>
+                                                <div class="col-sm-3 pb-3">
+                                                    <label for="timestamp">Timestamp</label> <select
+                                                        class="form-control custom-select" id="timestamp" name="timestamp">
+                                                        <option value="no">
+                                                            Não 
+                                                            </option>
+                                                        <option value="yes">
+                                                            Sim
+                                                        </option>
+                                        
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-6 pb-3">
+                                                    <label for="image">Imagem</label>
+                                                    <input class="form-control" id="image" name="image"
+                                                        type="url" >
+                                                </div>
+                                              
+                                                                              
+                                
+                                                <div class="col-sm-5 pb-3">
+                                                    <label for="footer">Rodapé</label>
+                                                    <input class="form-control" id="footer" name="footer" type="text">
+                                                </div>
+                                                <div class="col-md-6 pb-3">
+                                                    <label for="description">Descrição</label>
+                                                    <textarea class="form-control"
+                                                        id="description" name="description" required rows="4"></textarea>
+                                                </div>
+                                                        </div>
+
+                                               
+                                        <div class="card-footer">
+                                            <div class="float-right">
+                                                <input class="btn btn-secondary" type="reset"
+                                                    value="Resetar">
+                                                <input class="btn btn-primary" type="submit" value="Enviar Embed">
+                                            </div>
+                                        </div>
+                                    
+                                    <!--/card-->
+                                </div>
+                            </div>
+                            <!--/row-->
+                        </div>
+                        <!--/col-->
+                    </div>
+                    <!--/row-->
+        </div>    
+                                                  </form>`;
+    }
+
+async function autorole(){
+
+    let ctx = document.getElementById("sistemas");
+
+//if ($('#sistemas').html().length === 0) {
+ctx.innerHTML = `    
+    
+    <form action="/api/<%= guild.id %>/save/autorole" method="POST" class="">
+        <div class="container py-3 " >
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row justify-content-center">
+                                <div class="col-md-10 offset-md-1">
+                                    <span class="anchor" id="formComplex"></span>
+                                    <!-- form complex example -->
+                                    <div class="card card-outline-secondary" style="background : rgb(212, 212, 212); color : #000;">
+                                        <div class="card-header">
+                                            <h3 class="mb-0" style="text-align: center;">Autorole</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row mt-4">
+                                                
+
+                                               
+                                        
+                                 
+                                                <div class="col-sm-5 pb-3">
+                                                    <label for="role">Cargo</label>
+                                                    <select class="form-control custom-select" id="role" name="role">
+                                                        <% for(var i=0; i < roles.length; i++) {%>
+                                                            <% if(roles[i].managed === false) { %>
+
+                                                                <% if(roles[i].name === "@everyone") { %>
+                                                                    
+                                                                <% } else {%>
+                                                                    <option value="<%= roles[i].id %>"><%= roles[i].name %></option>
+                                                                <% } %>
+
+                 <% } %>                                       <% } %>                          
+                                                   </select>
+                                                </div>
+                                                                                               
+                                                </div>
+
+                                               
+                                        <div class="card-footer">
+                                            <div class="float-right">
+                                                <input class="btn btn-secondary" type="reset"
+                                                    value="Resetar">
+                                                <input class="btn btn-primary" type="submit" value="Salvar">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/card-->
+                                </div>
+                            </div>
+                            <!--/row-->
+                        </div>
+                        <!--/col-->
+                    </div>
+                    <!--/row-->
+        </div>    
+    </form>
+    `
+  
+}
+    
+    $(document).ready(() => {
+
+      });
+  </script>
+      </html>

@@ -18,7 +18,7 @@
     <br><br>
     <div class="server-list">
         <% for(var i=0; i < data.length; i++) {%>
-            <a href="/server/<%= data[i].id %>">
+            <a href="/gerenciar/<%= data[i].id %>">
                 <div class="server">
                     <% if(data[i].icon === null ) { %>
                         
@@ -38,7 +38,7 @@
 
     <div class="server-list-mobile">
         <% for(var i=0; i < data.length; i++) {%>
-            <a href="/server/<%= data[i].id %>">
+            <a href="/gerenciar/<%= data[i].id %>">
                 <div class="server-mobile">
                    
                     <% if(data[i].icon === null ) { %>
@@ -58,10 +58,11 @@
           <style>
             @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500;700&display=swap');
 
-body { 
+            body { 
     background-color : rgb(37, 37, 37); 
     font-family: josefin sans;
 }
+
 
 .primary-heading {
     text-align: center;
